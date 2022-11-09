@@ -1,0 +1,27 @@
+{
+  "name": "team-hero",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abrowncownow/team-hero.git"
+  },
+  "author": "abrowncownow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abrowncownow/team-hero/issues"
+  },
+  "homepage": "https://github.com/abrowncownow/team-hero#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^9.1.4",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.25.5"
+  }
+}
