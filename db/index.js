@@ -2,11 +2,13 @@
 import db from "connections.js"
 
 //class with query functions
+class DBFuncs {
 
+}
 
 
 
 
 //export class
 
-module.exports = new DBClass(db)
+module.exports = new DBFuncs(db)

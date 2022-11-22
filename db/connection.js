@@ -18,5 +18,5 @@ db.connect((err) => {
   if (err){
     throw err;
   }
-})
+});
 module.exports = db;

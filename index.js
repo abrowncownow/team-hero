@@ -1,6 +1,7 @@
 import Sequelize from "sequelize";
 import inquirer from "inquirer";
 import db from "./db/connection";
+import cTable from "console.table";
 
 //import class
 //require console table
