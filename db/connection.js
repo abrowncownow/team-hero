@@ -1,6 +1,6 @@
 // Import and require mysql2
 const mysql = require('mysql2');
-
+require('dotenv').config()
 // Connect to database
 const db = mysql.createConnection(
   {
@@ -8,7 +8,7 @@ const db = mysql.createConnection(
     // MySQL username,
     user: 'root',
     // MySQL password
-    password: '!1Vigesimal69',
+    password: process.env.DB_PASSWORD,
     database: 'team_db'
   },
   console.log(`Connected to the team_db database.`)
