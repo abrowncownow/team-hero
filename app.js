@@ -9,7 +9,7 @@ async function menu(){
     const answers = await inquirer.prompt([{
         name: 'choice',
         type: 'list',
-        choices: ['View All Departments', 'Add Department', 'View All Roles', 'Add Role','View All Employees', 'Add Employee'],
+        choices: ['View All Departments', 'View All Roles', 'View All Employees', 'Add Department', 'Add Role', 'Add Employee', 'Update Employee Role'],
         message: 'What would you like to do?'
     }]);
     switch (answers.choice){
@@ -34,6 +34,9 @@ async function menu(){
             break;
         case 'Add Employee':
             addEmployee();
+            break
+        case 'Update Employee Role':
+            updateEmployee();
             break
     }
 }
@@ -96,9 +99,34 @@ async function addDepartment(){
         message: 'What is the name of the department?'
     }]);
 
-    DBFuncs.addDepartment(answers);
+    DBFuncs.addDepartment(answers.department);
     DBFuncs.getAllDepartments();
     menu();
 }
+
+async function updateEmployee(){
+    db.query("select * from employees", (err, res) => {
+        if (err) throw err;
+        inquirer.prompt([{
+            name: 'employee_id',
+            type: 'list',
+            message: "Select which employee to update:",
+            choices: res.map((res) => ({
+                value: res.id,
+                name: res.id + ' ' + res.first_name + ' ' + res.last_name,
+            }))
+        },{
+            name:'role_id',
+            type: 'input',
+            message: "Enter the employee's new role id"        
+         }
+        ]).then ((result) => {
+          DBFuncs.updateEmployee(result);
+          menu();
+        });
+      });
+
+}
+
 menu();
 
